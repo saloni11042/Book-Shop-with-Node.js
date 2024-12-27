@@ -1,37 +1,29 @@
 const express = require('express');
 const path = require('path')
-const ejs = require(('ejs'))
-const db = require('./connection/database')
 
-
-const bodyParser = require('body-parser');
+const userRouter = require('./routes/user')
+const adminRouter = require('./routes/admin')
 
 const app = express();
 
-const adminData = require('./routes/admin')
-const shopRoutes = require('./routes/shop')
 
-// db.execute('SELECT * FROM products')
-// .then(result=>{
-//     console.log(result);
-// })
-// .catch(err=>{
-//     console.log(err)
-// })
+app.set('view engine', 'ejs');
+app.set('views',path.resolve('./views'))
 
-const errorController = require('./controller/errorController')
-const mongoConnect = require('./utils/database')
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/user',userRouter)
+app.use('/admin',adminRouter)
 
-// app.use('/admin',adminData.routes);
-app.use('/admin',adminData);
-app.use(shopRoutes);
+app.use((req,res)=>{
+    res.render('home',{title:"BookShop"})
+})
 
-app.set('view engine','ejs');
-app.set('views','views');
+app.use((req,res)=>{
+    res.render('404',{title:"Page not Found"})
+})
 
-app.use(errorController.get404Error)
-
-app.listen(3000);
+app.listen(3000,()=>{
+    console.log('Server started')
+})
