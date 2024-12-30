@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    overflow-x: hidden;
+}
+.hero-row{
+    background-image: url('../images/h1_hero1.jpg');
+    height: 500px;
+    width: 500px;
+}
+.row{
+    display: flex;
+}
+.col{
+    
+}

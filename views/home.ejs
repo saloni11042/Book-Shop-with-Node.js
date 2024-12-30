@@ -1,23 +1,135 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=title%></title>
+    <title><%= title %> | Bookshop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/user/categories">Categories</a></li>
-                <li><a href="/user/about">About</a></li>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="/user/blog">Blog</a></li>
-                <li><a href="/user/contact">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>Home</h1>
+
+<!-- Header Section -->
+<header>
+    <div class="row nav-row"></div>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/user/categories">Categories</a></li>
+            <li><a href="/user/about">About</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/user/blog">Blog</a></li>
+            <li><a href="/user/contact">Contact</a></li>
+        </ul>
+    </nav>
+   <div class="row hero-row">
+    <div class="col">
+        <img src="../images/h1_hero1.jpg" alt="">
+    </div>
+   </div>
     </header>
+      
+    
+      <div class="best-seller"></div>
+      <div class="featured"></div>
+      <div class="latest"></div>
+      <div class="details"></div>
+      <div class="subscribe"></div>
+      
+
+<!-- Main Content Section -->
+<section class="book-listing">
+    <div class="container">
+        <h2 class="my-5 text-center">Latest Books</h2>
+        <div class="row">
+            <% books.forEach(function(book) { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="<%= book.image %>" class="card-img-top" alt="<%= book.book_name %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= book.book_name %></h5>
+                            <p class="card-text"><%= book.author_name %></p>
+                            <p class="card-text">$<%= book.price %></p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+
+<div class="container">
+    <footer class="py-3 ">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of what's new and exciting from us.</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+        <p>© 2024 Company, Inc. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3 mx-3"><a class="link-body-emphasis" href="#">
+            <i class="bi bi-facebook"></i>
+          </a></li>
+          <li class="ms-3 mx-3"><a class="link-body-emphasis" href="#">
+            <i class="bi bi-instagram"></i>
+          </a></li>
+          <li class="ms-3 mx-3"><a class="link-body-emphasis" href="#">
+            <i class="bi bi-whatsapp"></i>
+          </a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+<!-- Scripts -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

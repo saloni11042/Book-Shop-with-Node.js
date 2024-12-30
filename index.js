@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path')
 const db = require('./connection/database')
+const multer  = require('multer')
 
 const userRouter = require('./routes/user')
 const adminRouter = require('./routes/admin')
@@ -18,8 +19,8 @@ app.use(express.static('public'));
 app.use('/user',userRouter)
 app.use('/admin',adminRouter)
 
-app.use((req,res)=>{
-    res.render('home',{title:"BookShop"})
+app.use('/',(req,res)=>{
+    res.render('home',{title:"BookShop",books:[]})
 })
 
 app.use((req,res)=>{
