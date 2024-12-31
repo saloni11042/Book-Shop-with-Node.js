@@ -4,7 +4,8 @@ const db = require('./connection/database')
 const multer  = require('multer')
 
 const userRouter = require('./routes/user')
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/admin');
+const Book = require('./models/admin');
 
 const app = express();
 
@@ -19,8 +20,10 @@ app.use(express.static('public'));
 app.use('/user',userRouter)
 app.use('/admin',adminRouter)
 
-app.use('/',(req,res)=>{
-    res.render('home',{title:"BookShop",books:[]})
+
+app.use('/',async (req,res)=>{
+    const products = await Book.allProducts();
+    res.render('home',{title:"BookShop",books:products})
 })
 
 app.use((req,res)=>{

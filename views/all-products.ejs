@@ -13,8 +13,14 @@
         <p>Author: <%= book.author_name %></p> 
         <p>Price: <%= book.price %></p>
         <img src="<%= book.image %>" alt="Book Image" style="max-width: 150px;">
-        <button><a href="/admin/update-product">Update Product</a></button>
-        <button><a href="/admin/delete-product">Delete Product</a></button>
+        <img src="../my-uploads/<%= book.book_image %>" alt="Book Image" style="max-width: 150px;">
+        <a href="/admin/update-product/<%=book.id%>">Update Product</a>
+            
+        
+        <form action="/admin/delete-product/<%=book.id%>" method="post">
+            <button type="submit">Delete Product</button>
+        </form>
+        
     <% } %>
 </body>
 </html>

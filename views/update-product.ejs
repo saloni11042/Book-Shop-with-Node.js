@@ -9,13 +9,13 @@
     <h1>Add Product</h1>
     <form action="/admin/update-product" method="post">
     <label for="name">Book Name</label>
-    <input type="text" name="book_name" id="name" value="<%=books.book_name%>">
+    <input type="text" name="book_name" id="name" value="<%=book.book_name%>">
     <label for="author">Author Name</label>
-    <input type="text" name="author_name" id="author" value="<%=books.author_name%>">
+    <input type="text" name="author_name" id="author" value="<%=book.author_name%>">
     <label for="price">Price</label>
-    <input type="text" name="price" id="price" value="<%=books.price%>">
+    <input type="text" name="price" id="price" value="<%=book.price%>">
     <label for="image">Book Image</label>
-    <input type="text" name="image" id="image" value="<%=books.image%>">
+    <input type="text" name="image" id="image" value="<%=book.image%>">
     <button type="submit">Update Product</button>
     </form>
 </body>

@@ -1,5 +1,5 @@
 const express = require('express');
-const {handleAdmin,handleGetAddProduct,handlePostAddProduct,handleAllProduct,handleGetUpdateProduct,handlePostUpdateProduct} = require('../controllers/admin')
+const {handleAdmin,handleGetAddProduct,handlePostAddProduct,handleAllProduct,handleGetUpdateProduct,handlePostUpdateProduct,handleDeleteProduct} = require('../controllers/admin')
 
 const router = express.Router();
 
@@ -19,9 +19,9 @@ const storage = multer.diskStorage({
 router.get('/',handleAdmin);
 router.get('/add-product',handleGetAddProduct);
 router.post('/add-product',upload.single('bookImage'),handlePostAddProduct);
-router.get('/update-product/:bookId',handleGetUpdateProduct);
+router.get('/update-product/:id',handleGetUpdateProduct);
 router.post('/update-product',handlePostUpdateProduct);
-router.delete('/delete-product/:bookId',handlePostAddProduct);
+router.post('/delete-product/:id',handleDeleteProduct);
 router.use('/all-products',handleAllProduct);
 
 module.exports = router;
